@@ -8,7 +8,7 @@ const Navbar = () => {
   const navItems = <>
   <Link   className= "rounded-[12px] border border-[#37d16d] bg-[#f2f2f2] px-4 py-2 text-[1.02rem] "
                href="/">Home</Link>
-  <Link href="/books">Listed Books</Link>
+  <Link href="/listed-books">Listed Books</Link>
   <Link href="/pages-to-read">Pages to Read</Link>
   </>
   return (

@@ -1,26 +1,40 @@
 'use client';
 
-import React, { createContext , useState } from "react";
+import React, { createContext, useState } from "react";
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
- export const BooksContext = createContext();
+export const BooksContext = createContext(null);
 
-const BooksProvider = ({children}) => {
-const[readBooks, setReadBooks] = useState([]);
-const [wishlistBooks, setWishlistBooks] = useState([]);
+const BooksProvider = ({ children }) => {
+  const [readBooks, setReadBooks] = useState([]);
+  const [wishlistBooks, setWishlistBooks] = useState([]);
 
-const sharedData = {
-    readBooks,
-    setReadBooks,
-    wishlistBooks,
-    setWishlistBooks,
+  return (
+    <BooksContext.Provider
+      value={{
+        readBooks,
+        setReadBooks,
+        wishlistBooks,
+        setWishlistBooks,
+      }}
+    >
+      {children}
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+    </BooksContext.Provider>
+  );
 };
 
-    return (
-        <BooksContext.Provider value={{sharedData}}>
-            {children}
-        </BooksContext.Provider>
-    );
-};
-
-// export { BooksContext };
 export default BooksProvider;

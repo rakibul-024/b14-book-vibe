@@ -1,4 +1,5 @@
 import ReadButton from "@/app/components/bookDetails/ReadButton";
+import WishListButton from "@/app/components/bookDetails/WishListButton";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,7 +7,6 @@ import React from "react";
 const BooksDetailsPage = async ({ params }) => {
   const { bookId } = await params;
 
- 
   const res = await fetch("http://localhost:3000/booksData.json", {
     cache: "no-store",
   });
@@ -129,12 +129,9 @@ const BooksDetailsPage = async ({ params }) => {
 
           {/* Buttons */}
           <div className="mt-8 flex gap-4">
-          <ReadButton></ReadButton>
-            <button className="rounded-xl bg-[#50B1C9] px-7 py-3 text-sm font-bold text-white hover:bg-[#429cb2]">
-              Wishlist
-            </button>
+            <ReadButton book={book} />
+            <WishListButton book={book} />
           </div>
-
         </div>
       </div>
     </main>
