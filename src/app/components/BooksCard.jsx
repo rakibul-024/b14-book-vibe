@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const BooksCard = ({ book }) => {
@@ -56,9 +57,14 @@ const BooksCard = ({ book }) => {
         </div>
 
         {/* View Details Button */}
-        <button className="w-full rounded-xl bg-[#35d26d] py-2.5 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#35d26d] active:scale-[0.99]">
-          View Details
-        </button>
+    
+<Link
+  href={`/books/${book.bookId}`}
+  className="block w-full rounded-xl bg-[#35d26d] py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#2fc563]"
+>
+  View Details
+</Link> 
+      
       </div>
     </div>
   );

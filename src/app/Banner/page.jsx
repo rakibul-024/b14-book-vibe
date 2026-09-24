@@ -16,17 +16,16 @@ const Banner = () => {
             </button>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src="/assets/banner-img.png"
-              alt="Book cover"
-              width={420}
-              height={520}
-              priority
-              className="w-[280px] md:w-[330px]"
-              style={{ transform: 'rotate(-2deg)' }}
-            />
-          </div>
+<div className="flex justify-center lg:justify-end">
+  <Image
+    src="/assets/banner-img.png"
+    alt="Book cover"
+    width={420}
+    height={520}
+    priority
+    className="w-70 md:w-82.5 -rotate-2 transform-gpu transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:rotate-0 hover:scale-105 drop-shadow-xl"
+  />
+</div>
         </div>
       </div>
     </section>
