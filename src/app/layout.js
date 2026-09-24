@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navber/page";
+import BooksProvider from "./context/BooksContext";
 
 
 const geistSans = Geist({
@@ -26,8 +27,12 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#e7e7e7]">
-    <Navbar></Navbar>
+        <BooksProvider>
+  <Navbar></Navbar>
         <main>{children}</main>
+
+        </BooksProvider>
+  
       </body>
     </html>
   );
