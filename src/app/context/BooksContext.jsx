@@ -2,7 +2,7 @@
 
 import React, { createContext , useState } from "react";
 
-const BooksContext = createContext();
+ export const BooksContext = createContext();
 
 const BooksProvider = ({children}) => {
 const[readBooks, setReadBooks] = useState([]);
@@ -22,5 +22,5 @@ const sharedData = {
     );
 };
 
-export { BooksContext };
+// export { BooksContext };
 export default BooksProvider;

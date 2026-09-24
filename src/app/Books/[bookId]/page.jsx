@@ -1,3 +1,4 @@
+import ReadButton from "@/app/components/bookDetails/ReadButton";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -128,9 +129,7 @@ const BooksDetailsPage = async ({ params }) => {
 
           {/* Buttons */}
           <div className="mt-8 flex gap-4">
-            <button className="rounded-xl border border-gray-300 px-7 py-3 text-sm font-bold text-gray-900 hover:bg-gray-50">
-              Read
-            </button>
+          <ReadButton></ReadButton>
             <button className="rounded-xl bg-[#50B1C9] px-7 py-3 text-sm font-bold text-white hover:bg-[#429cb2]">
               Wishlist
             </button>
