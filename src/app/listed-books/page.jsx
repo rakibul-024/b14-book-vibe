@@ -67,7 +67,16 @@ const ListedBooks = () => {
     useContext(BooksContext);
   const [activeTab, setActiveTab] = useState("read");
   const [sortBy, setSortBy] = useState("default");
+  const [sortMenuOpen, setSortMenuOpen] = useState(false);
   const books = activeTab === "read" ? readBooks : wishlistBooks;
+  const sortOptions = [
+    { value: "default", label: "Sort By" },
+    { value: "rating", label: "Rating" },
+    { value: "pages", label: "Number of pages" },
+    { value: "year", label: "Year of publishing" },
+  ];
+  const selectedSortLabel =
+    sortOptions.find((option) => option.value === sortBy)?.label || "Sort By";
 
   const sortedBooks = useMemo(() => {
     const result = [...books];
@@ -99,18 +108,43 @@ const ListedBooks = () => {
           Books
         </h1>
 
-        <div className="mt-6 flex justify-end">
-          <select
-            value={sortBy}
-            onChange={(event) => setSortBy(event.target.value)}
-            className="rounded-lg bg-[#23be0a] px-4 py-2 text-sm font-semibold text-white outline-none"
-            aria-label="Sort books"
-          >
-            <option value="default">Sort By</option>
-            <option value="rating">Rating</option>
-            <option value="pages">Number of pages</option>
-            <option value="year">Year of publishing</option>
-          </select>
+        <div className="relative mt-6 flex justify-end">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setSortMenuOpen((open) => !open)}
+              className="flex min-w-28 items-center justify-between gap-4 rounded-lg bg-[#23be0a] px-4 py-2 text-sm font-semibold text-white"
+              aria-expanded={sortMenuOpen}
+              aria-haspopup="listbox"
+            >
+              {selectedSortLabel}
+              <span aria-hidden="true">{sortMenuOpen ? "⌃" : "⌄"}</span>
+            </button>
+
+            {sortMenuOpen && (
+              <div
+                className="absolute right-0 z-20 mt-1 w-48 overflow-hidden border border-[#d7d7d7] bg-white shadow-md"
+                role="listbox"
+                aria-label="Sort books"
+              >
+                {sortOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => {
+                      setSortBy(option.value);
+                      setSortMenuOpen(false);
+                    }}
+                    className="block w-full bg-white px-4 py-2 text-left text-sm text-[#222] hover:bg-[#23be0a] hover:text-white"
+                    role="option"
+                    aria-selected={sortBy === option.value}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="mt-5 flex gap-1 border-b border-[#e5e5e5]">

@@ -1,16 +1,12 @@
+"use client";
+
 import Link from "next/link";
-
-
-const navItems = ["Home", "Listed Books", "Pages to Read"];
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const isActive = (path) => pathname === path;
 
-  const navItems = <>
-  <Link   className= "rounded-[12px] border border-[#37d16d] bg-[#f2f2f2] px-4 py-2 text-[1.02rem] "
-               href="/">Home</Link>
-  <Link href="/listed-books">Listed Books</Link>
-  <Link href="/pages-to-read">Pages to Read</Link>
-  </>
   return (
     <header className="w-full px-4 pt-6 pb-4 mb-4">
       <nav className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 bg-transparent px-0">
@@ -21,7 +17,24 @@ const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-8 md:flex">
-        {navItems}
+          <Link
+            href="/"
+            className={isActive("/") ? "rounded-[12px] border border-[#37d16d] bg-[#f2f2f2] px-4 py-2 text-[1.02rem]" : "text-[1.02rem]"}
+          >
+            Home
+          </Link>
+          <Link
+            href="/listed-books"
+            className={isActive("/listed-books") ? "rounded-[12px] border border-[#37d16d] bg-[#f2f2f2] px-4 py-2 text-[1.02rem]" : "text-[1.02rem]"}
+          >
+            Listed Books
+          </Link>
+          <Link
+            href="/pages-to-read"
+            className={isActive("/pages-to-read") ? "rounded-[12px] border border-[#37d16d] bg-[#f2f2f2] px-4 py-2 text-[1.02rem]" : "text-[1.02rem]"}
+          >
+            Pages to Read
+          </Link>
         </div>
 
         <div className="flex items-center gap-3">

@@ -15,7 +15,7 @@ const WishListButton = ({ book }) => {
         }
 
         setWishlistBooks((currentBooks) => [...currentBooks, book]);
-        toast.success("Book added to Wishlist Books.");
+        toast.success("Book added to Wishlist successfully.");
     };
     return (
         <button className="btn btn-info flex-1" onClick={handleWishListBook}>
