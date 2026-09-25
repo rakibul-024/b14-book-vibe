@@ -1,15 +1,8 @@
 import React from 'react';
 import BooksCard from '@/app/components/BooksCard';
-
-const BooksData = async () => {
-  const response = await fetch('http://localhost:3000/booksData.json');
-  const data = await response.json();
-  return data;
-};
+import booksData from '../../../public/booksData.json';
 
 const Page = async () => {
-  const data = await BooksData();
-
   return (
     <main className="min-h-screen bg-white py-12">
       {/* Strict Container Width & Centering */}
@@ -20,7 +13,7 @@ const Page = async () => {
 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((book) => (
+          {booksData.map((book) => (
             <BooksCard key={book.bookId || book.id} book={book} />
           ))}
         </div>

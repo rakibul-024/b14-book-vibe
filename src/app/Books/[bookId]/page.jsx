@@ -3,21 +3,12 @@ import WishListButton from "@/app/components/bookDetails/WishListButton";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import booksData from "../../../../public/booksData.json";
 
 const BooksDetailsPage = async ({ params }) => {
   const { bookId } = await params;
 
-  const res = await fetch("http://localhost:3000/booksData.json", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch books data");
-  }
-
-  const data = await res.json();
-
-  const book = data.find(
+  const book = booksData.find(
     (book) => String(book.bookId) === String(bookId)
   );
 

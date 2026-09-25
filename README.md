@@ -63,6 +63,22 @@ npm run build
 npm run start
 ```
 
+## Environment Variables
+
+Create a `.env.local` file for local development:
+
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+For a Vercel deployment, add the same variable in the project settings and replace the value with your deployed URL:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app
+```
+
+The variable is used as the application's metadata base URL. Book data is stored locally in `public/booksData.json`, so the application does not depend on a localhost API during the Vercel build.
+
 ## Application Routes
 
 | Route | Description |
